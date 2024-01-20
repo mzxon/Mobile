@@ -8,135 +8,66 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: '20240114 실습',
-      home: Grade(),
+    return MaterialApp(
+      title: 'Appbar',
+      theme: ThemeData(
+        primarySwatch: Colors.orange,
+      ),
+      home: MyPage(),
     );
   }
 }
 
-class Grade extends StatelessWidget {
-  const Grade({super.key});
+class MyPage extends StatelessWidget {
+  const MyPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.amber[800],
       appBar: AppBar(
-        title: Text('BBANTO'),
-        backgroundColor: Colors.amber[700],
+        title: Text('Appbar icon menu'),
         centerTitle: true,
         elevation: 0.0,
-      ),
-      body: Padding(
-          padding: EdgeInsets.fromLTRB(30.0, 40.0, 0.0, 0.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget> [
-              Center(
-                child: CircleAvatar(
-                  backgroundImage: AssetImage('assets/practice1.png'),
-                  radius: 60.0,
-                ),
-              ),
-              Divider(
-                height: 60.0,
-                color: Colors.grey[850],
-                thickness: 0.5,
-                endIndent: 30.0,
-              ),
-              Text("NAME",
-              style: TextStyle(
-                color: Colors.white,
-                letterSpacing: 2.0,
-              ),
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              Text("BBANTO",
-              style: TextStyle(
-                color: Colors.white,
-                letterSpacing: 2.0,
-                fontSize: 28.0,
-                fontWeight: FontWeight.bold,
-              ),
-              ),
-              SizedBox(
-                height: 30.0,
-              ),
-              Text("BBANTO POWER LEVEL",
-                style: TextStyle(
-                  color: Colors.white,
-                  letterSpacing: 2.0,
-                ),
-              ),
-              SizedBox(
-                height: 10.0,
-              ),
-              Text("14",
-                style: TextStyle(
-                  color: Colors.white,
-                  letterSpacing: 2.0,
-                  fontSize: 28.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                height: 30.0,
-              ),
-              Row(
-                children: <Widget>[
-                  Icon(Icons.check_circle_outline),
-                  SizedBox(
-                    width: 10.0,
-                  ),
-                  Text("using lightsaber",
-                  style: TextStyle(
-                    fontSize: 16.0,
-                    letterSpacing: 1.0,
-                  ),
-                  ),
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  Icon(Icons.check_circle_outline),
-                  SizedBox(
-                    width: 10.0,
-                  ),
-                  Text("face hero tattoo",
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      letterSpacing: 1.0,
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                children: <Widget>[
-                  Icon(Icons.check_circle_outline),
-                  SizedBox(
-                    width: 10.0,
-                  ),
-                  Text("fire flames",
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      letterSpacing: 1.0,
-                    ),
-                  ),
-                ],
-              ),
-              Center(
-                child: CircleAvatar(
-                  backgroundImage: AssetImage('assets/practice2.png'),
-                  radius: 40.0,
-                  backgroundColor: Colors.amber[800],
-                ),
-              )
-            ],
+
+        actions: <Widget>[
+          IconButton(
+              icon: Icon(Icons.shopping_cart),
+              onPressed: () {
+                print("Shopping cart button is clicked");
+              }
           ),
+          IconButton(
+              icon: Icon(Icons.search),
+              onPressed: () {
+                print("Search button is clicked");
+              }
+          ),
+        ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage("assets/practice1.png"),
+                backgroundColor: Colors.white,
+              ),
+              accountEmail: Text("bbanto@gmail.com"),
+              accountName: Text("BBANTO"),
+              onDetailsPressed: (){
+                print("arrow is clicked");
+              },
+              decoration: BoxDecoration(
+                color: Colors.red[200],
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(40.0),
+                  bottomRight: Radius.circular(40.0),
+                )
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
