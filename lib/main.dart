@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() => runApp(MyApp());
 
@@ -159,17 +160,34 @@ class SecondPage extends StatelessWidget {
         title: Text('Second Page'),
       ),
       body: Center(
-        child: Text(
-          '"좋아요가 추가 되었습니다."',
-          style: TextStyle(
-            fontSize: 20.0,
-            color: Colors.redAccent
-          ),
+        // child: Text(
+        //   '"좋아요가 추가 되었습니다."',
+        //   style: TextStyle(
+        //     fontSize: 20.0,
+        //     color: Colors.redAccent
+        //   ),
+        // ),
+        child: TextButton(
+          onPressed: (){
+            flutterToast();
+          },
+          child: Text('Toast'),
         ),
       ),
     );
   }
 }
+
+void flutterToast(){
+  Fluttertoast.showToast(msg: 'Flutter',
+    gravity: ToastGravity.BOTTOM,
+    backgroundColor: Colors.redAccent,
+    fontSize: 20.0,
+    textColor: Colors.white,
+    toastLength: Toast.LENGTH_SHORT
+  );
+}
+
 
 class ThirdPage extends StatelessWidget {
 
